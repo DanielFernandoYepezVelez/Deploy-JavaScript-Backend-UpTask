@@ -1,14 +1,16 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
+var __awaiter = (this && this.__awaiter) || function(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function(resolve) { resolve(value); }); }
+    return new(P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+
         function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function(mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -40,17 +42,19 @@ class App {
         this.app.use("/api", auth_module_routes_1.AuthRoutes.login);
         this.app.use("/api", auth_module_routes_1.AuthRoutes.register);
         this.app.use("/api", project_module_routes_1.ProjectRoutes.project);
+        this.app.get("*", (req, res) => {
+            res.sendFile(path_1.default.resolve(__dirname, './public/index.html'));
+        });
     }
     staticFiles() {
         this.app.use(express_1.default.static(path_1.default.join(__dirname, './public/')));
     }
     server() {
-        return __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function*() {
             try {
                 yield this.app.listen(process.env.PORT);
                 console.log(`Server On Port ${process.env.PORT}`);
-            }
-            catch (e) {
+            } catch (e) {
                 console.log(`You Can't Connect The Server`);
                 console.log(e);
             }
