@@ -43,7 +43,7 @@ class App {
         this.app.use("/api", auth_module_routes_1.AuthRoutes.register);
         this.app.use("/api", project_module_routes_1.ProjectRoutes.project);
         this.app.get("*", (req, res) => {
-            res.sendFile(path_1.default.resolve(__dirname, './public/index.html'));
+            res.sendFile(path_1.default.resolve(__dirname, './public/'));
         });
     }
     staticFiles() {
