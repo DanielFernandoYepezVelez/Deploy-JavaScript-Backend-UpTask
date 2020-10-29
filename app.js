@@ -37,17 +37,17 @@ class App {
         passport_1.default.use(passportJwt.newStrategia());
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
+    staticFiles() {
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, './public/')));
+    }
     routes() {
         this.app.use("/api", task_module_routes_1.TaskRoutes.task);
         this.app.use("/api", auth_module_routes_1.AuthRoutes.login);
         this.app.use("/api", auth_module_routes_1.AuthRoutes.register);
         this.app.use("/api", project_module_routes_1.ProjectRoutes.project);
         this.app.get("*", (req, res) => {
-            res.sendFile(path_1.default.resolve(__dirname, './public/'));
+            res.sendFile(path_1.default.resolve(__dirname, './public/index.html'));
         });
-    }
-    staticFiles() {
-        this.app.use(express_1.default.static(path_1.default.join(__dirname, './public/')));
     }
     server() {
         return __awaiter(this, void 0, void 0, function*() {

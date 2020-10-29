@@ -8,8 +8,8 @@ class Main {
     }
     init() {
         this.main.middlewares();
-        this.main.routes();
         this.main.staticFiles();
+        this.main.routes();
         this.main.server();
     }
 }
