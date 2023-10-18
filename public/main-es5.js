@@ -4802,7 +4802,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      baseUrl: 'http://localhost:3000/api'
+      // baseUrl: 'http://localhost:3000/api',
+      baseUrl: 'https://uptask-administration.onrender.com/api'
     };
     /*
      * For easier debugging in development mode, you can import the following file
